@@ -12,37 +12,37 @@
         <table>
             <tr>
                 <td>
-                    <label for="nombre"> Nombre: </label>
+                    <label for="nombre"> Nombre: </label><br>
                     <input type="text" id="nombre" name="nombre">
                 </td>
                 <td>
-                    <label>Correo Electrónico:
+                    <label>Correo Electrónico:<br>
                         <input type="email" id="email" name="email">
                     </label>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <label for="password"> Contraseña: </label>
+                    <label for="password"> Contraseña: </label><br>
                     <input type="password" id="password" name="password">
                 </td>
                 <td>
-                    <label for="url"> Sitio Web: </label>
+                    <label for="url"> Sitio Web: </label><br>
                     <input type="url" id="url" name="url">
                 </td>
             </tr>
             <tr>
                 <td>
-                    <label for="telefono"> Telefono: </label>
+                    <label for="telefono"> Telefono: </label><br>
                     <input type="tel" id="telefono" name="telefono">
                 </td>
                 <td>
-                    <label for="buscar"> Buscar: </label>
+                    <label for="buscar"> Buscar: </label><br>
                     <input type="search" id="buscar" name="buscar">
                 </td>
             </tr>
             <!-- Tipos Numéricos -->
-             <tr>
+            <tr>
                 <td>
                     <label for="edad"> Edad </label>
                     <input type="number" id="edad" name="edad" min="0" max="120" step="1">
@@ -52,9 +52,150 @@
                     <input type="range" id="volumen" name="volumen" min="0" max="120" value=50
                     oninput="document.getElementById('val-vol').textContent=this.value">
                 </td>
+            </tr>
+
+            <!-- Tipos Fechas-->
+            <tr>
+                <td colspan="2">
+                    <h3> Tipos de Fecha </h3>
+                </td>
              </tr>
+            <tr>
+                <td>
+                    <label for="fecha"> Fecha de nacimiento </label> <br>
+                    <input type="date" id="fecha" name="fecha">
+                </td>
+                <td>
+                    <label for="hora"> Hora de la cita </label><br>
+                    <input type="time" id="hora" name="hora">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="evento"> Inicio del Evento </label> <br>
+                    <input type="datetime-local" id="evento" name="evento">
+                </td>
+                <td>
+                    <label for="mes"> Mes de Inicio </label> <br>
+                    <input type="month" id="mes" name="mes">
+                </td>
+            </tr> 
+
+            <!-- Checkbox y Option -->
+            <tr>
+                <td colspan="2">
+                    <h3> Checkbox y Option </h3>
+                </td>
+             </tr>
+            <tr>
+                <td>
+                    <input type="checkbox" id="acepto" name="acepto" value="si">
+                    <label for="acepto"> Acepto los términos y condiciones </label>
+                </td>
+                <td>
+                    <fieldset>
+                        <legend>
+                            Método de Pago
+                        </legend>
+                        <input type="radio" id="tarjeta" name="pago" value="tarjeta">
+                        <label for="tarjeta"> Tarjeta de Crédito </label><br>
+                        <input type="radio" id="paypal" name="pago" value="paypal">
+                        <label for="paypal"> Paypal </label><br>
+                        <input type="radio" id="transferencia" name="pago" value="transferencia">
+                        <label for="transferencia"> Transferencia Bancaria </label>
+                    </fieldset>
+                </td>
+            </tr>
+
+             <!-- Utiles -->
+            <tr>
+                <td colspan="2">
+                    <h3> Útiles </h3>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="color"> Color </label><br>
+                    <input type="color" id="color" name="color" value="#3b82f6">
+                </td>
+                <td>
+                    <label for="color"> Foto de perfil: </label><br>
+                    <input type="file" id="foto" name="foto" value="image/">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="docs"> Documentos </label><br>
+                    <input type="file" id="docs" name="documentos" accept=".pdf,.doc,.docx">
+                </td>
+                <td>
+                    <input type="hidden" id="token" name="token" value="abcd123xyz">
+                </td>
+            </tr>
+
+            <!-- TextArea y Select -->
+            <tr>
+                <td colspan="2">
+                    <h3> TextArea y Select </h3>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="mensaje"> Mensaje </label><br>
+                    <textarea id="mensaje" 
+                    name="mensaje" 
+                    rows="6" 
+                    cols=50 placeholder="Escribe tu mensaje aquí"></textarea>
+                </td>
+                <td>
+                    <!-- Select Basico -->
+                    <label for="pais"> País: </label><br>
+                    <select id="pais" name="pais">
+                        <option value="">--Seleccione un País</option>
+                        <option value="co">--Colombia</option>
+                        <option value="ec">--Ecuador</option>
+                        <option value="es">--España</option>
+                        <option value="ve">--Venezuela</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <!-- Select con optgroup -->
+                    <label for="ciudad"> Ciudades: </label><br>
+                    <select id="ciudad" name="ciudad">
+                        <optgroup label="España">
+                            <option value="mad"> Madrid </option>
+                            <option value="bcn"> Barcelona </option>
+                            <option value="sev"> Sevilla </option>
+                        </optgroup>
+                        <optgroup label="Mexico">
+                            <option value="cdm"> Ciudad de Mexico </option>
+                            <option value="gdj"> Guadalajara </option>
+                        </optgroup>
+                        <optgroup label="Venezuela">
+                            <option value="cor"> Coro </option>
+                            <option value="mar"> Maracaibo </option>
+                        </optgroup>
+                    </select>
+                </td>
+                <td>
+                    <!-- Selección Múltiple -->
+                    <label for="skill"> Habilidades: </label><br>
+                    <select id="skill" name="habilidades[]" multiple size="4">
+                        <option value="html5"> HTML5 </option>
+                        <option value="ccs3"> CCS3</option>
+                        <option value="js"> JavaScript </option>
+                        <option value="ts"> TypeScript </option>
+                    </select>
+                </td>
+            </tr>
         </table>
-        <button type="submit"> Enviar </button>  
+
+        <button type="submit"> Enviar </button>
+        <button type="reset"> Limpiar </button>
+        <button type="button"> Aceptar </button>  
+
     </form>
 
 </body>
