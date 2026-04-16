@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Formulario Validacion </title>
+</head>
+<body>
+    <h1> Formulario con Validación </h1>
+    <form action="/procesar" method="post">
+        <table> <!-- Puede o no estar el table -->
+            <fieldset>
+                <legend>
+                    Campo obligatorio
+                </legend>
+                <label for="nombre"> Nombre </label><br>
+                <input type="text" id="nombre" name="nombre" required>
+            </fieldset>     
+            <fieldset>
+                <legend>
+                    Campo obligatorio
+                </legend>
+                <label for="nombre"> Nombre </label><br>
+                <input type="text" id="nombre" name="nombre" required>
+            </fieldset>  
+            <fieldset>
+                <legend>
+                    Minlenght / Maxlenght
+                </legend>
+                <label for="apellido"> Apellido </label><br>
+                <input type="text" id="apellido" name="apellido" min="18" max="99">
+            </fieldset>
+            <fieldset>
+                <legend>
+                    Patrón de caracteres - expresión regular
+                </legend>
+                <label for="codigo_postal"> Código Postal </label><br>
+                <input type="email" id="codigo_postal" name="codigo_postal" pattern="[0-9]{5}">
+            </fieldset>
+            <fieldset>
+                <legend>
+                    min / max rango para números
+                </legend>
+                <label for="edad"> Edad </label><br>
+                <input type="number" id="edad" name="edad" min="18" max="99">
+            </fieldset>
+            <fieldset>
+                <legend>
+                    Deshabilitado
+                </legend>
+                <label for="ref"> Referencia </label><br>
+                <input type="text" id="ref" name="ref" value="REF-001" disabled>
+            </fieldset>
+            <fieldset>
+                <legend>
+                    Solo Lectura
+                </legend>
+                <label for="pais"> Pais </label><br>
+                <input type="text" id="pais" name="pais" value="Ecuador" readonly>
+            </fieldset>
+        </table>
+        <button type="submit"> Crear cuenta </button>
+    </form>
+</body>
+</html>
