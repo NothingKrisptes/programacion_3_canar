@@ -1,0 +1,47 @@
+.producto-card {
+    width: 280px;
+    padding: 20px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    margin: 16px;
+    background-color: #68c2ec;
+  }
+
+  .item-card {
+    width: 280px;
+    border: 1px solid #00000000;
+    border-radius: 8px;
+    margin: 16px;
+    background-color: #dc88e7;
+    /* Un valor: los 4 lados */
+    /*padding: 20px;*/
+  
+    /* Dos valores: vertical | horizontal */
+    /*padding: 15px 25px;*/
+  
+    /* Tres valores: top | horizontal | bottom */
+    /*padding: 10px 20px 15px;*/
+  
+    /* Cuatro valores: top | right | bottom | left */
+    padding: 8px 6px 6px 8px;
+  }
+
+  /* Sin border-box */
+.producto1-card {
+    width: 280px;
+    padding: 20px;
+    border: 10px solid #ccc;
+    /* Ancho real: 280 + 20+20 + 1+1 = 322px ← sorpresa */
+  }
+  
+  /* Con border-box: el width incluye padding y border */
+  * {
+    box-sizing: border-box;
+  }
+  
+.producto2-card {
+    width: 280px;
+    padding: 20px;
+    border: 10px solid #ccc;
+    /* Ancho real: 280px ← predecible */
+  }
