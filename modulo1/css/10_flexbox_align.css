@@ -1,0 +1,52 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+.contenedor {
+    display: flex;
+    height: 150px;
+    background: #ddd;
+    margin-bottom: 20px;
+    border: 2px solid #999;
+}
+
+.item {
+    background: #e63946;
+    color: white;
+    padding: 10px;
+    margin: 5px;
+}
+
+/* diferentes alturas para ver el efecto */
+.item:nth-child(1) {
+    font-size: 12px;
+}
+
+.item:nth-child(2) {
+    font-size: 20px;
+}
+
+.item:nth-child(3) {
+    font-size: 30px;
+}
+
+/* clases de align-items */
+.stretch {
+    align-items: stretch;
+}
+
+.inicio {
+    align-items: flex-start;
+}
+
+.fin {
+    align-items: flex-end;
+}
+
+.centro {
+    align-items: center;
+}
+
+.baseline {
+    align-items: baseline;
+}

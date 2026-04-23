@@ -1,0 +1,49 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f4f4;
+}
+
+h2 {
+    margin-top: 30px;
+}
+
+.contenedor {
+    display: flex;
+    background: #ddd;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 2px solid #999;
+}
+
+.item {
+    background: #457b9d;
+    color: white;
+    padding: 15px;
+    margin: 5px;
+    font-weight: bold;
+}
+
+/* Clases de alineación */
+.inicio {
+    justify-content: flex-start;
+}
+
+.fin {
+    justify-content: flex-end;
+}
+
+.centro {
+    justify-content: center;
+}
+
+.between {
+    justify-content: space-between;
+}
+
+.around {
+    justify-content: space-around;
+}
+
+.evenly {
+    justify-content: space-evenly;
+}

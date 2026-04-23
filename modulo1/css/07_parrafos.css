@@ -1,5 +1,6 @@
 h1{
     text-align: center;
+    color: var(--color-primario)
 }
 .parrafo {
     line-height: 1.6;
@@ -14,4 +15,60 @@ h1{
 .descripcion-larga {
     line-height: 1.8;
     /* textos largos más cómodos de leer */
+}
+
+.logo-tienda {
+    letter-spacing: 0.15em; /* separa letras: T E C H S T O R E */
+    text-transform: uppercase;
+}
+  
+.etiqueta-categoria {
+    letter-spacing: 0.05em;
+    word-spacing: 0.1em;
+}
+
+.banner-oferta    { text-align: center; }
+.descripcion      { text-align: left; }
+.precio-total     { text-align: right; }
+.texto-justificado { text-align: justify; }
+
+/* Links del menú sin subrayado */
+.none-text-decoration{
+    text-decoration: none;
+}
+  
+  /* Precio tachado en oferta */
+.precio-antes {
+    text-decoration: line-through;
+    color: #999;
+}
+  
+  /* Subrayado personalizado */
+.link-destacado {
+    text-decoration: underline;
+    text-decoration-color: #e63946;
+    text-underline-offset: 4px;
+}
+
+.logo-tienda2      { text-transform: uppercase; }  /* TECHSTORE */
+.subtitulo        { text-transform: capitalize; } /* Cada Primera Mayúscula */
+.codigo-producto  { text-transform: lowercase; }  /* laptop-pro-x1 */
+
+.producto-nombre {
+    white-space: nowrap;      /* no permitir saltos de línea */
+    overflow: hidden;         /* ocultar lo que desborda */
+    text-overflow: ellipsis;  /* mostrar "..." al final */
+    max-width: 200px;
+}
+
+.alerta { color: red; }
+.exito  { color: green; }
+.info   { color: blue; }
+
+:root {
+    --color-primario:    #42da23; /* rojo TechStore */
+    --color-secundario:  #dadaee; /* azul oscuro */
+    --color-acento:      #457b9d; /* azul medio */
+    --color-fondo:       #f8f9fa; /* gris muy claro */
+    --color-texto:       #4485c5; /* casi negro */
 }
