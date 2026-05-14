@@ -27,8 +27,9 @@ export class AppService {
   }
   createProduct(product: ProductDto): ProductDto {
     const newProduct: ProductDto = {
+      ...product,
       id: Math.floor(Math.random()*1000)+1,
-      ...product
+      
     } 
     this.products.push(newProduct);
     return{
