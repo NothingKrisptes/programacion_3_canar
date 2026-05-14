@@ -1,12 +1,27 @@
-import { Controller, Get } from '@nestjs/common';
+import { Body, Controller, Get, Post } from '@nestjs/common';
 import { AppService } from './app.service';
+import { ProductDto } from './product_dto';
 
 @Controller()
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
-  @Get()
-  getHello(): string {
-    return this.appService.getHello();
+  @Get("/health")
+  getHeath(): any {
+    return this.appService.getHeath();
+  }
+  @Post("/products")
+  createProduct(@Body() product: ProductDto): ProductDto {
+    return this.appService.createProduct(product);
+  }
+
+  @Get("/products")
+  findAll(): ProductDto[]{
+    return this.appService.findAll();
+  }
+
+  @Get("/products/:id")
+  findById(@Param('id') id: string): ProductDto {
+    return this.appService.findById(id);
   }
 }
