@@ -1,0 +1,95 @@
+.vehiculo-card {
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 16px;
+}
+
+.vehiculo-card2 {
+  font-size: 1.25em;
+  padding: 0.5em;
+}
+
+:root {
+  --color-primario: #1a73e8;
+}
+
+.header {
+  background: #1a1a2e;
+  color: white;
+  padding: 1rem;
+}
+
+#toggle-menu {
+  display: none;
+}
+
+.btn-menu {
+  cursor: pointer;
+  font-size: 1.2rem;
+}
+
+.menu-movil {
+  display: none;
+  background: #1a73e8;
+  padding: 1rem;
+}
+
+#toggle-menu:checked ~ .menu-movil {
+  display: block;
+}
+
+button {
+  padding: 0.5rem 1rem;
+  margin: 0.5rem;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-primario-suave {
+  background-color: color-mix(in srgb, var(--color-primario) 20%, white);
+  color: var(--color-primario);
+}
+
+.btn-primario-oscuro {
+  background-color: color-mix(in srgb, var(--color-primario) 80%, black);
+  color: white;
+}
+
+.gradiente-solido {
+  background-color: color-mix(in srgb, #1a73e8 50%, #34a853 50%);
+  color: white;
+}
+
+.caja {
+  padding: 1rem;
+  margin-top: 1rem;
+}
+
+.imagen {
+  background-image: url("https://via.placeholder.com/400x200");
+  background-size: cover;
+  height: 200px;
+  margin-top: 1rem;
+  position: relative;
+}
+
+.imagen-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  background-color: color-mix(in srgb, #1a1a2e 70%, transparent);
+}
+
+.hero-banner {
+  height: 100vh;
+  width: 100vw;
+  background-color: #e8f0fe;
+}
+
+.seccion-destacados {
+  min-height: 50vh;
+  background-color: #f8f9fa;
+}

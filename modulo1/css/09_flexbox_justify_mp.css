@@ -1,0 +1,31 @@
+body {
+  font-family: Arial, sans-serif;
+  background: #f8f9fa;
+}
+
+h2 {
+  margin-top: 30px;
+}
+
+.contenedor {
+  display: flex;
+  background: #e8f0fe;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 2px solid #1a73e8;
+}
+
+.item {
+  background: #1a73e8;
+  color: white;
+  padding: 15px;
+  margin: 5px;
+  font-weight: bold;
+}
+
+.inicio  { justify-content: flex-start; }
+.fin     { justify-content: flex-end; }
+.centro  { justify-content: center; }
+.between { justify-content: space-between; }
+.around  { justify-content: space-around; }
+.evenly  { justify-content: space-evenly; }

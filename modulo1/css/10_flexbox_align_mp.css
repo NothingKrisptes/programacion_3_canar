@@ -1,0 +1,28 @@
+body {
+  font-family: Arial, sans-serif;
+}
+
+.contenedor {
+  display: flex;
+  height: 150px;
+  background: #e8f0fe;
+  margin-bottom: 20px;
+  border: 2px solid #1a73e8;
+}
+
+.item {
+  background: #1a73e8;
+  color: white;
+  padding: 10px;
+  margin: 5px;
+}
+
+.item:nth-child(1) { font-size: 12px; }
+.item:nth-child(2) { font-size: 20px; }
+.item:nth-child(3) { font-size: 30px; }
+
+.stretch  { align-items: stretch; }
+.inicio   { align-items: flex-start; }
+.fin      { align-items: flex-end; }
+.centro   { align-items: center; }
+.baseline { align-items: baseline; }

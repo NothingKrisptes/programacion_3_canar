@@ -1,0 +1,21 @@
+.vehiculos-grid {
+  display: flex;
+}
+
+.contenedor {
+  display: flex;
+  flex-direction: row;
+  flex-direction: row-reverse;
+  flex-direction: column;
+  flex-direction: column-reverse;
+}
+
+.navbar {
+  display: flex;
+  flex-direction: row;
+}
+
+.vehiculo-card {
+  display: flex;
+  flex-direction: column;
+}

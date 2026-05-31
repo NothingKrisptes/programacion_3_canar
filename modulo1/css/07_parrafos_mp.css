@@ -1,0 +1,69 @@
+:root {
+  --color-primario: #1a73e8;
+  --color-secundario: #e8f0fe;
+  --color-acento: #34a853;
+  --color-fondo: #f8f9fa;
+  --color-texto: #1a1a2e;
+}
+
+h1 {
+  text-align: center;
+  color: var(--color-primario);
+}
+
+.parrafo {
+  line-height: 1.6;
+}
+
+.titulo-parrafo {
+  line-height: 1.2;
+}
+
+.descripcion-larga {
+  line-height: 1.8;
+}
+
+.logo-tienda {
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.etiqueta-categoria {
+  letter-spacing: 0.05em;
+  word-spacing: 0.1em;
+}
+
+.banner-oferta  { text-align: center; }
+.descripcion    { text-align: left; }
+.precio-total   { text-align: right; }
+.texto-justificado { text-align: justify; }
+
+.none-text-decoration {
+  text-decoration: none;
+}
+
+.precio-antes {
+  text-decoration: line-through;
+  color: #999;
+}
+
+.link-destacado {
+  text-decoration: underline;
+  text-decoration-color: #1a73e8;
+  text-underline-offset: 4px;
+}
+
+.logo-tienda2      { text-transform: uppercase; }
+.subtitulo         { text-transform: capitalize; }
+.codigo-reserva    { text-transform: lowercase; }
+
+.nombre-vehiculo {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 200px;
+}
+
+.alerta { color: #ea4335; }
+.exito  { color: #34a853; }
+.info   { color: #1a73e8; }

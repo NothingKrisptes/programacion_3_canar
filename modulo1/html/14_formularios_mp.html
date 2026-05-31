@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wheels To Go - Reserva de Vehículo</title>
+</head>
+<body>
+    
+    <h1> Reserva tu Vehículo </h1>
+    
+    <form action="/api/reservas" method="post">
+        <table>
+            <tr>
+                <td>
+                    <label for="nombre_conductor"> Nombre del Conductor: </label><br>
+                    <input type="text" id="nombre_conductor" name="nombre_conductor">
+                </td>
+                <td>
+                    <label>Correo Electrónico de Contacto:<br>
+                        <input type="email" id="email_contacto" name="email_contacto">
+                    </label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="password_cuenta"> Crear Contraseña de Cuenta: </label><br>
+                    <input type="password" id="password_cuenta" name="password_cuenta">
+                </td>
+                <td>
+                    <label for="url_licencia"> Enlace a Licencia Digital (Opcional): </label><br>
+                    <input type="url" id="url_licencia" name="url_licencia">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="telefono_emergencia"> Teléfono de Emergencia: </label><br>
+                    <input type="tel" id="telefono_emergencia" name="telefono_emergencia">
+                </td>
+                <td>
+                    <label for="buscar_auto"> Buscar modelo de preferencia: </label><br>
+                    <input type="search" id="buscar_auto" name="buscar_auto" placeholder="Ej: SUV, Sedán">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="oficina_retiro"> Oficina de Retiro: </label><br>
+                    <select id="oficina_retiro" name="oficina_retiro">
+                        <optgroup label="Ecuador (Sierra)">
+                            <option value="uio_norte"> Quito - Norte </option>
+                            <option value="uio_aeropuerto"> Quito - Aeropuerto Tababela </option>
+                            <option value="amb_centro"> Ambato - Centro </option>
+                        </optgroup>
+                        <optgroup label="Ecuador (Costa)">
+                            <option value="gye_aeropuerto"> Guayaquil - Aeropuerto JJO </option>
+                            <option value="man_manta"> Manta - Puerto </option>
+                        </optgroup>
+                    </select>
+                </td>
+                <td>
+                    <label for="servicios_extra"> Extras (Ctrl/Cmd + Click para varios): </label><br>
+                    <select id="servicios_extra" name="servicios_extra[]" multiple size="4">
+                        <option value="gps"> Navegador GPS </option>
+                        <option value="silla_bebe"> Silla para Bebé </option>
+                        <option value="conductor_adicional"> Conductor Adicional </option>
+                        <option value="seguro_premium"> Seguro Cobertura Total </option>
+                    </select>
+                </td>
+            </tr>
+        </table>
+
+        <button type="submit"> Confirmar Reserva </button>
+        <button type="reset"> Limpiar Formulario </button>
+        <button type="button"> Cotizar sin reservar </button>  
+
+    </form>
+
+</body>
+</html>

@@ -30,7 +30,7 @@ const ticketsPendientes = [
   
     indice++;
   }
-  
+
   console.log(`Total procesados: ${ticketsPendientes.length} tickets`);
 
 // 🔴 [URGENTE] T001: Sistema caído

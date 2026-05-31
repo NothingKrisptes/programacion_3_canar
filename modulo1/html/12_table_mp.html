@@ -1,203 +1,70 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Tablas </title>
+    <title>Wheels To Go - Inventario y Sucursales</title>
 </head>
 <body>
-    <h1> Tabla </h1>
-    <table border = "1">
+    <h1> Últimos Alquileres </h1>
+    <table border="1">
         <tr>
-            <th> Nombre </th>
-            <th> Edad </th>
-            <th> Ciudad </th>
+            <th> Cliente </th>
+            <th> Vehículo </th>
+            <th> Ciudad de Retiro </th>
         </tr>
         <tr>
             <td> Ana Garcia </td>
-            <td> 28 </td>
+            <td> Toyota Yaris </td>
             <td> Quito </td>
         </tr>
         <tr>
             <td> Luis Perez </td>
-            <td> 29 </td>
+            <td> Chevrolet Tracker </td>
             <td> Guayaquil </td>
         </tr>
-        <tr>
-            <td> Pedro Herrera </td>
-            <td> 45 </td>
-            <td> Ambato </td>
-        </tr>
     </table>
 
     <hr>
 
-    <h1> Tabla por secciones </h1>
+    <h1> Inventario de Flota </h1>
     <table border>
         <thead>
             <tr>
-                <th> Producto </th>
-                <th> Precio </th>
-                <th> Stock </th>
-                <th> Categoria </th>
+                <th> Vehículo </th>
+                <th> Precio/Día </th>
+                <th> Unidades Disponibles </th>
+                <th> Categoría </th>
             </tr>
         </thead>
         <tbody>
             <tr>
-                <td> Monitor 4k </td>
-                <td> 450$ </td>
+                <td> Toyota RAV4 </td>
+                <td> $65 </td>
                 <td> 12 </td>
-                <td> Electrónica </td>
+                <td> SUV </td>
             </tr>
             <tr>
-                <td> Teclado mecánico </td>
-                <td> 79$ </td>
+                <td> Kia Picanto </td>
+                <td> $35 </td>
                 <td> 5 </td>
-                <td> Periféricos </td>
-            </tr>
-            <tr>
-                <td> Mouse inalámbrico </td>
-                <td> 45$ </td>
-                <td> 15 </td>
-                <td> Periféricos </td>
+                <td> Económico </td>
             </tr>
         </tbody>
         <tfoot>
             <tr>
-                <td> Total </td>
-                <td> 1500$ </td>
-                <td> 32 </td>
-                <td> </td>
-            </tr>
-        </tfoot>
-    </table>
-
-    <hr>
-
-    <h1> Tabla Scope - Calificaciones </h1>
-    <table border>
-        <thead>
-            <tr>
-                <th scope="col"> Materias </th>
-                <th scope="col"> 1er. Corte </th>
-                <th scope="col"> 2do. Corte </th>
-                <th scope="col"> Categoria </th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td scope="row"> Programación I </td> 
-                <td> 9 </td>
-                <td> 10 </td>
-                <td> 8 </td>
-            </tr>
-            <tr>
-                <td scope="row"> Base de datos </td>
-                <td> 10 </td>
-                <td> 10 </td>
-                <td> 9 </td>
-            </tr>
-            <tr>
-                <td scope="row"> Calidad de Software </td>
-                <td> 7 </td>
-                <td> 10 </td>
-                <td> 9 </td>
-            </tr>
-        </tbody>
-    </table>
-
-    <hr>
-
-    <h1> Combinación de Celdas - Clasificaciones </h1>
-    <table border = "1">
-        <thead>
-            <tr>
-                <th rowspan="2"> Equipo </th>
-                <th colspan="3"> Resultados </th>
-                <th rowspan="2"> Puntos </th>
-            </tr>
-            <tr>
-                <th> V </th>
-                <th> E </th>
-                <th> D </th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td> Real Madrid </td> 
-                <td> 22 </td>
-                <td> 5 </td>
-                <td> 3 </td>
-                <td> 71 </td>
-            </tr>
-            <tr>
-                <td> Barcelona </td> 
-                <td> 29 </td>
-                <td> 6 </td>
-                <td> 5 </td>
-                <td> 66 </td>
-            </tr>
-            <tr>
-                <td> Atlético </td> 
-                <td> 18 </td>
-                <td> 7 </td>
-                <td> 5 </td>
-                <td> 61 </td>
-            </tr>
-        </tbody>
-    </table>
-
-    <hr>
-
-    <h1> Titulo y Resumen - Calificaciones </h1>
-    <table border = "2">
-        <thead>
-            <tr>
-                <th> Alumno </th>
-                <th> Matemáticas </th>
-                <th> Lenguaje </th>
-                <th> Ciencias </th>
                 <th> Promedio </th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td> Luis Ruiz </td> 
-                <td> 9 </td>
-                <td> 8 </td>
-                <td> 9 </td>
-                <td> 8.7 </td>
-            </tr>
-            <tr>
-                <td> Jorge Lazaro </td> 
-                <td> 6 </td>
-                <td> 7 </td>
-                <td> 8 </td>
-                <td> 7.0 </td>
-            </tr>
-            <tr>
-                <td> Andreina Medina </td> 
-                <td> 10 </td>
-                <td> 9 </td>
-                <td> 10 </td>
-                <td> 9.7 </td>
-            </tr>
-        </tbody>
-        <tfoot>
-            <tr>
-                <th> Media Clase </th>
-                <td> 8.3 </td>
-                <td> 8.0 </td>
-                <td> 9.8 </td>
+                <td> $50 </td>
                 <td> 8.5 </td>
+                <td> - </td>
             </tr>
         </tfoot>
     </table>
 
     <hr>
 
-    <h1> Colgroup - Calificaciones </h1>
-    <table border = "2">
+    <h1> Horarios de Sucursales </h1>
+    <table border="2">
         <thead>
             <tr>
                 <col style="background-color:antiquewhite">
@@ -208,20 +75,18 @@
         </thead>
         <tbody>
             <tr>
-                <td> Jhonny de La Cruz </td> 
+                <td> Sucursal Norte (Quito) </td> 
+                <td> Lunes </td>
                 <td> Martes </td>
-                <td> Miercoles </td>
-                <td> Jueves </td>
+                <td> Miércoles </td>
             </tr>
             <tr>
-                <td> Programación I </td> 
-                <td> 7:00 am </td>
-                <td> 8:00 am </td>
-                <td> 9:00 am </td>
+                <td> Horario de Atención </td> 
+                <td> 7:00 am - 8:00 pm </td>
+                <td> 8:00 am - 8:00 pm </td>
+                <td> 8:00 am - 6:00 pm </td>
             </tr>
         </tbody>
     </table>
-
 </body>
-
 </html>

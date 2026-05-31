@@ -1,0 +1,39 @@
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  text-align: center;
+}
+
+.tarifa-vehiculo {
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.titulos {
+  font-family: 'Playfair Display', Georgia, serif;
+}
+
+.internacional {
+  font-family: 'Inter', sans-serif;
+  color: cadetblue;
+}
+
+.titulo-seccion {
+  font-weight: 700;
+}
+
+.tarifa-vehiculo {
+  font-weight: 600;
+}
+
+.descripcion {
+  font-weight: 400;
+}
+
+.nota-legal {
+  font-weight: 300;
+}
+
+.precio-original {
+  font-style: italic;
+  text-decoration: line-through;
+  color: #af0d0d;
+}
