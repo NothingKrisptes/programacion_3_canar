@@ -71,3 +71,4 @@ export class UsersController {
     return new SuccessResponseDto('Profile image updated', user);
   }
 }
+  
