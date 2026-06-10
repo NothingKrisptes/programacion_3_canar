@@ -25,3 +25,17 @@ function cambiarContenido(){
     const contenido = document.getElementById('contenido');
     contenido.textContent = "Nuevo Parrafo";
 }
+
+document.getElementById('campo').addEventListener ('input', () => {
+    console.log('Valor del campo: ',
+        document.getElementById('campo').value);
+});
+
+document.getElementById('campo_actualizar_parrafo').addEventListener ('input', () => {
+    const valorCampo = document
+        .getElementById('campo_actualizar_parrafo').value;
+    document.getElementsById('parrafo')
+        .textContent = 
+            `Valor actualizado: ${valorCampo}`;
+});
+
