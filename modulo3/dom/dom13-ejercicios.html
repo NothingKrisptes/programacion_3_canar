@@ -1,0 +1,98 @@
+<!--  Desarrolla una página web que permita registrar empleados de una empresa y calcule automáticamente el promedio de sueldos del personal ingresado.
+Formulario de ingreso con los campos:
+
+
+Nombre
+Apellido
+Sueldo (valor numérico positivo)
+Botón "Agregar" que al hacer clic:
+
+
+Valide que ningún campo esté vacío
+Valide que el sueldo sea un número mayor a cero
+Agregue el empleado a un arreglo de objetos
+Actualice la tabla en pantalla
+Limpie el formulario
+Tabla dinámica que muestre todos los empleados registrados con columnas: # | Nombre | Apellido | Sueldo
+
+
+Promedio de sueldo que se recalcule y muestre cada vez que se agrega un empleado, usando la fórmula:
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Manipulación de DOM </title>
+    <script src="dom13-ejercicios.js" defer></script>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 20 px;
+        }
+        h2{
+            color: #333;
+        }
+        table{  
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td{
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .btn-agregar:hover {
+            background-color: #4CAF50;
+            color: white;
+        }
+        .btn-cancelar:hover {
+            background-color: #f44336;
+            color: white;
+        }
+
+    </style>
+  
+</head>
+
+<body>
+
+    <h1 id="titulo"> Eventos en el DOM </h1>
+    <h2> Registro de Empleados </h2>
+    <div class="formulario">
+        <h3> Agregar Nuevo Empleado </h3>
+        <label for="nombre">Nombre:</label>
+        <input id="nombre" type="text" placeholder="Nombre del empleado">
+        <label for="apellido">Apellido:</label>
+        <input id="apellido" type="text" placeholder="Apellido del empleado">
+        <label for="sueldo">Sueldo:</label>
+        <input id="sueldo" type="number" placeholder="Sueldo del empleado">
+        <button id="btn_agregar" class="btn-agregar"> Agregar Empleado </button>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Sueldo</th>
+            </tr>
+        </thead>
+        <tbody id="cuerpoTabla">
+        </tbody>
+    </table>
+    
+</body>
+
+</html>
