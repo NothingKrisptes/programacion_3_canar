@@ -1,38 +1,27 @@
 // src/App.tsx
+import PetCatalogList from './components/PetsCard'
 
-import ProductCard from './components/ProductCard'
-
-interface Product {
+interface Pet {
   id: number
   name: string
+  type: string
+  edad?: number
   price: number
-  outOfStock?: boolean
 }
 
-const catalog: Product[] = [
-  { id: 1, name: 'Teclado mecánico', price: 89.99 },
-  { id: 2, name: 'Monitor 27"', price: 349.99 },
-  { id: 3, name: 'Mouse inalámbrico', price: 29.99, outOfStock: true },
-  { id: 4, name: 'Webcam HD', price: 59.99 },
+const catalog: Pet[] = [
+  { id: 1, name: 'Felipe', type: 'felino', edad: 2, price: 10},
+  { id: 2, name: 'Negrito', type: 'canino', edad: 3, price: 15},
+  { id: 3, name: 'Garph', type: 'felino', edad: 5, price: 20},
+  { id: 4, name: 'Deacon', type: 'canino' , edad: 6, price: 15},
+  { id: 5, name: 'Pancho', type: 'felino', edad: 4, price: 14.99},
 ]
 
 export default function App() {
   return (
     <main style={{ maxWidth: 540, margin: '40px auto', fontFamily: 'sans-serif' }}>
 
-      <ProductCard
-        title="Bienvenido a la tienda"
-        description="Encuentra los mejores accesorios para tu escritorio"
-        highlighted
-        price = {1000}
-      />
-
-      <ProductCard title="Oferta del día" 
-                   description="Webcam HD con 20% de descuento" 
-      />
-
-      <ProductCard title="Novedades de la Semana" />
-
+      <PetCatalogList pets={catalog} title="Lista de Mascotas" />
 
     </main>
   )
