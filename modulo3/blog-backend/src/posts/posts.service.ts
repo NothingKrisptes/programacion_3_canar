@@ -14,7 +14,7 @@ export class PostsService {
     private postsRepository: Repository<Post>,
     @InjectRepository(Category)
     private categoriesRepository: Repository<Category>,
-  ) {}
+  ) { }
 
   async create(createPostDto: CreatePostDto): Promise<Post | null> {
     try {
