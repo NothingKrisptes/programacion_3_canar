@@ -1,11 +1,11 @@
 const campoBase = document.getElementById('base');
 const campoAltura = document.getElementById('altura');
 const btnArea = document.getElementById('btn_area');
-const resultado = document.getElementById('area');
+const area = document.getElementById('area');
 
 btnArea.addEventListener('click', function() {
-   const campoBase = parseFloat(base.value);
-   const campoAltura = parseFloat(altura.value);
-   const resultado = base * altura/2;
-   resultado.textContent = `Resultado: ${area}` 
+   const campoBaset = parseFloat(base.value);
+   const campoAlturat = parseFloat(altura.value);
+   const resultado = campoBaset * campoAlturat/2;
+   area.textContent = `Resultado: ${resultado}` 
 });

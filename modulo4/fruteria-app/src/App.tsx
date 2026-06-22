@@ -11,6 +11,8 @@ import StatusBadge         from './components/StatusBadge'
 import MiniProfileCard     from './components/MiniProfileCard'
 import SimpleInfoTable     from './components/SimpleInfoTable'
 import SimpleInfoCars      from './components/SimpleInfoCars'
+import DigitalCounter from './components/DigitalCounter'
+import UserProfileForm from './components/UserProfileForm'
 /*import ProductCard         from './components/ProductCard'
 import ProductCatalogList  from './components/ProductCatalogList'
 import UserProfileCard     from './components/UserProfileCard'*/
@@ -32,7 +34,7 @@ import UserProfileCard     from './components/UserProfileCard'*/
 // │  12  ProductCatalogList  — lista con renderizado condicional de items   │
 // │  13  UserProfileCard     — ejercicio: props complejas + rol             │
 // └──────────────────────────────────────────────────────────────────────────┘
-const PASO = 11
+const PASO = 12
 
 const fruits = [
   { name: 'Manzana', emoji: '🍎', inSeason: true, calories: 52 },
@@ -98,6 +100,15 @@ export default function App() {
       />
     ) :
     PASO === 11 ? (
+      <DigitalCounter 
+      label="Contador" 
+      step={1}
+      />
+    ):
+    PASO === 12 ? (
+      <UserProfileForm/>
+    ):
+    /*PASO === 11 ? (
       <SimpleInfoCars
         title="Resumen del pedido"
         rows={[
@@ -110,7 +121,7 @@ export default function App() {
         ]}
         
       />
-    ) :
+    ) : */
     <p style={{ color: '#e00' }}>Paso {PASO}: crea el componente primero</p>
   return (
     <main style={{ maxWidth: 1260, margin: '40px auto', fontFamily: 'sans-serif', padding: '0 16px' }}>

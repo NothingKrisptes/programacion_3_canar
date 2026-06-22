@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Registro de Calificaciones</title>
+   <style>
+       body {
+           font-family: Arial, sans-serif;
+           margin: 40px;
+           background-color: #f5f7fa;
+       }
+
+
+       h2 {
+           color: #2c3e50;
+           border-bottom: 2px solid #8e44ad;
+           padding-bottom: 6px;
+       }
+
+
+       .card {
+           background: white;
+           border: 1px solid #dde3ea;
+           border-radius: 8px;
+           padding: 24px;
+           max-width: 480px;
+           box-shadow: 0 2px 6px rgba(0,0,0,0.07);
+       }
+
+
+       .fila-ingreso {
+           display: flex;
+           gap: 10px;
+           align-items: center;
+           margin-bottom: 14px;
+       }
+
+
+       .fila-ingreso input[type="text"] {
+           flex: 2;
+           padding: 7px 10px;
+           border: 1px solid #aaa;
+           border-radius: 4px;
+           font-size: 14px;
+       }
+
+
+       .fila-ingreso input[type="number"] {
+           flex: 1;
+           padding: 7px 10px;
+           border: 1px solid #aaa;
+           border-radius: 4px;
+           font-size: 14px;
+       }
+
+
+       .fila-ingreso input:focus {
+           outline: none;
+           border-color: #8e44ad;
+           box-shadow: 0 0 0 2px rgba(142,68,173,0.2);
+       }
+
+
+       .fila-ingreso label {
+           font-size: 13px;
+           color: #555;
+           white-space: nowrap;
+       }
+
+
+       .botones {
+           display: flex;
+           gap: 10px;
+           margin-top: 4px;
+       }
+
+
+       button {
+           padding: 9px 18px;
+           border: none;
+           border-radius: 4px;
+           font-size: 14px;
+           cursor: pointer;
+       }
+
+
+       .btn-agregar {
+           background-color: #8e44ad;
+           color: white;
+       }
+       .btn-agregar:hover { background-color: #6c3483; }
+
+
+       .btn-calcular {
+           background-color: #2980b9;
+           color: white;
+           flex: 1;
+       }
+       .btn-calcular:hover { background-color: #1a5276; }
+
+
+       .btn-limpiar {
+           background-color: #95a5a6;
+           color: white;
+       }
+       .btn-limpiar:hover { background-color: #7f8c8d; }
+
+
+       .error {
+           display: none;
+           background: #fdecea;
+           border: 1px solid #e74c3c;
+           color: #c0392b;
+           padding: 10px 14px;
+           border-radius: 6px;
+           margin-top: 12px;
+           font-size: 14px;
+       }
+
+
+       /* Lista de calificaciones ingresadas */
+       #listaAlumnos {
+           margin-top: 20px;
+           max-width: 480px;
+       }
+
+
+       #listaAlumnos h3 {
+           font-size: 14px;
+           color: #555;
+           margin-bottom: 8px;
+       }
+
+
+       table {
+           width: 100%;
+           border-collapse: collapse;
+           font-size: 14px;
+           background: white;
+           border-radius: 8px;
+           overflow: hidden;
+           box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+       }
+
+
+       thead tr {
+           background-color: #8e44ad;
+           color: white;
+       }
+
+
+       th, td {
+           padding: 9px 14px;
+           text-align: left;
+       }
+
+
+       tbody tr:nth-child(even) { background-color: #f9f0ff; }
+
+
+       .estado-aprobado { color: #1e8449; font-weight: bold; }
+       .estado-reprobado { color: #c0392b; font-weight: bold; }
+
+
+       .btn-eliminar {
+           background: none;
+           border: none;
+           color: #c0392b;
+           cursor: pointer;
+           font-size: 16px;
+           padding: 0 4px;
+       }
+
+
+       /* Panel de estadísticas */
+       .estadisticas {
+           display: none;
+           background: white;
+           border: 1px solid #dde3ea;
+           border-radius: 8px;
+           padding: 20px 24px;
+           margin-top: 20px;
+           max-width: 480px;
+           box-shadow: 0 2px 6px rgba(0,0,0,0.07);
+       }
+
+
+       .estadisticas h3 {
+           margin: 0 0 14px;
+           color: #2c3e50;
+           font-size: 15px;
+       }
+
+
+       .grilla-stats {
+           display: grid;
+           grid-template-columns: 1fr 1fr;
+           gap: 12px;
+       }
+
+
+       .stat-box {
+           border-radius: 8px;
+           padding: 14px;
+           text-align: center;
+       }
+
+
+       .stat-box .valor {
+           font-size: 1.8em;
+           font-weight: bold;
+       }
+
+
+       .stat-box .etiqueta {
+           font-size: 12px;
+           margin-top: 4px;
+           opacity: 0.85;
+       }
+
+
+       .box-promedio  { background: #f0e6f9; color: #6c3483; }
+       .box-mayor     { background: #eafaf1; color: #1e8449; }
+       .box-menor     { background: #fdecea; color: #c0392b; }
+       .box-aprobados { background: #eaf4fb; color: #1a5276; }
+   </style>
+</head>
+<body>
+
+
+   <h2>Registro de Calificaciones</h2>
+
+
+   <div class="card">
+       <div class="fila-ingreso">
+           <label>Nombre:</label>
+           <input type="text" id="inNombre" placeholder="Nombre del alumno">
+           <label>Nota:</label>
+           <input type="number" id="inNota" placeholder="0–10" min="0" max="10" step="0.01">
+           <button class="btn-agregar" onclick="agregarAlumno()">+</button>
+       </div>
+
+
+       <div class="botones">
+           <button class="btn-calcular" onclick="calcularEstadisticas()">Calcular estadísticas</button>
+           <button class="btn-limpiar"  onclick="limpiar()">Limpiar todo</button>
+       </div>
+
+
+       <div class="error" id="error"></div>
+   </div>
+
+
+   <!-- Tabla de alumnos -->
+   <div id="listaAlumnos" style="display:none">
+       <h3>Alumnos registrados</h3>
+       <table>
+           <thead>
+               <tr>
+                   <th>#</th>
+                   <th>Nombre</th>
+                   <th>Nota</th>
+                   <th>Estado</th>
+                   <th></th>
+               </tr>
+           </thead>
+           <tbody id="tablaBody"></tbody>
+       </table>
+   </div>
+
+
+   <!-- Estadísticas -->
+   <div class="estadisticas" id="estadisticas">
+       <h3>Estadísticas del grupo</h3>
+       <div class="grilla-stats">
+           <div class="stat-box box-promedio">
+               <div class="valor" id="sPromedio"></div>
+               <div class="etiqueta">Promedio general</div>
+           </div>
+           <div class="stat-box box-mayor">
+               <div class="valor" id="sMayor"></div>
+               <div class="etiqueta">Nota más alta</div>
+           </div>
+           <div class="stat-box box-menor">
+               <div class="valor" id="sMenor"></div>
+               <div class="etiqueta">Nota más baja</div>
+           </div>
+           <div class="stat-box box-aprobados">
+               <div class="valor" id="sAprobados"></div>
+               <div class="etiqueta">Aprobados / Total</div>
+           </div>
+       </div>
+   </div>
+
+
+   <script src="dom15-calificaciones.js"></script>
+</body>
+</html>
