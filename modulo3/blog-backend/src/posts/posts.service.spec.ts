@@ -1,19 +1,36 @@
-// src/posts/posts.service.spec.ts (tests completos)
+jest.mock('nestjs-typeorm-paginate', () => ({
+  paginate: jest.fn(),
+}));
 
 import { Test, TestingModule } from '@nestjs/testing';
 import { getRepositoryToken } from '@nestjs/typeorm';
+import { paginate } from 'nestjs-typeorm-paginate';
 import { PostsService } from './posts.service';
 import { Post } from './post.entity';
 import { Category } from '../categories/category.entity';
 
+const mockPaginate = paginate as jest.Mock;
+
+const POST_ID      = '11111111-1111-1111-1111-111111111111';
+const POST_ID_2    = '22222222-2222-2222-2222-222222222222';
+const CATEGORY_ID  = '44444444-4444-4444-4444-444444444444';
+const NOT_FOUND_ID = '99999999-9999-9999-9999-999999999999';
+
 describe('PostsService', () => {
   let service: PostsService;
 
+  const mockQueryBuilder = {
+    leftJoinAndSelect: jest.fn().mockReturnThis(),
+    where:             jest.fn().mockReturnThis(),
+    orderBy:           jest.fn().mockReturnThis(),
+  };
+
   const mockPostsRepository = {
-    create: jest.fn(),
-    save: jest.fn(),
-    findOne: jest.fn(),
-    delete: jest.fn(),
+    create:             jest.fn(),
+    save:               jest.fn(),
+    findOne:            jest.fn(),
+    delete:             jest.fn(),
+    createQueryBuilder: jest.fn(),
   };
 
   const mockCategoriesRepository = {
@@ -21,13 +38,16 @@ describe('PostsService', () => {
   };
 
   beforeEach(async () => {
-    // Limpiamos el estado de los mocks antes de cada test
     jest.clearAllMocks();
+    mockPostsRepository.createQueryBuilder.mockReturnValue(mockQueryBuilder);
+    mockQueryBuilder.leftJoinAndSelect.mockReturnThis();
+    mockQueryBuilder.where.mockReturnThis();
+    mockQueryBuilder.orderBy.mockReturnThis();
 
     const module: TestingModule = await Test.createTestingModule({
       providers: [
         PostsService,
-        { provide: getRepositoryToken(Post), useValue: mockPostsRepository },
+        { provide: getRepositoryToken(Post),     useValue: mockPostsRepository },
         { provide: getRepositoryToken(Category), useValue: mockCategoriesRepository },
       ],
     }).compile();
@@ -39,67 +59,33 @@ describe('PostsService', () => {
     expect(service).toBeDefined();
   });
 
-  // ────────────────────────────────────────────────────────────
   describe('create()', () => {
 
     it('should return null when category does not exist', async () => {
-      // Arrange: la categoría no existe
       mockCategoriesRepository.findOne.mockResolvedValue(null);
-
-      const dto = { title: 'Post', content: 'Contenido', categoryId: '99' };
-
-      // Act
-      const result = await service.create(dto);
-
-      // Assert
-      expect(result).toBeNull();
+      expect(await service.create({ title: 'Post', content: 'Contenido', categoryId: CATEGORY_ID })).toBeNull();
     });
 
     it('should create and return a post when category exists', async () => {
-      // Arrange: simulamos que la categoría y el post existen
-      const mockCategory = { id: '1', name: 'Tech' };
-      const mockPost = { id: 'abc', title: 'Post', content: 'Texto', category: mockCategory };
-
+      const mockCategory = { id: CATEGORY_ID, name: 'Tech' };
+      const mockPost     = { id: POST_ID, title: 'Post', content: 'Texto', category: mockCategory };
       mockCategoriesRepository.findOne.mockResolvedValue(mockCategory);
       mockPostsRepository.create.mockReturnValue(mockPost);
       mockPostsRepository.save.mockResolvedValue(mockPost);
 
-      const dto = { title: 'Post', content: 'Texto', categoryId: '1' };
-
-      // Act
-      const result = await service.create(dto);
-
-      // Assert
+      const result = await service.create({ title: 'Post', content: 'Texto', categoryId: CATEGORY_ID });
       expect(result).toEqual(mockPost);
-      expect(result).not.toBeNull();
     });
 
     it('should call categoriesRepository.findOne with correct id', async () => {
-      // Arrange
       mockCategoriesRepository.findOne.mockResolvedValue(null);
-      const dto = { title: 'Post', content: 'Texto', categoryId: '42' };
-
-      // Act
-      await service.create(dto);
-
-      // Assert: verificamos que se llamó con los parámetros correctos
-      expect(mockCategoriesRepository.findOne).toHaveBeenCalledWith({
-        where: { id: '42' },
-      });
+      await service.create({ title: 'Post', content: 'Texto', categoryId: CATEGORY_ID });
+      expect(mockCategoriesRepository.findOne).toHaveBeenCalledWith({ where: { id: CATEGORY_ID } });
     });
 
-    it('should return null when repository throws an error', async () => {
-      // Arrange: simulamos un error inesperado en la base de datos
-      mockCategoriesRepository.findOne.mockRejectedValue(
-        new Error('DB connection lost')
-      );
-      const dto = { title: 'Post', content: 'Texto', categoryId: '1' };
-
-      // Act
-      const result = await service.create(dto);
-
-      // Assert: el servicio captura el error y devuelve null
-      expect(result).toBeNull();
+    it('should return null when repository throws', async () => {
+      mockCategoriesRepository.findOne.mockRejectedValue(new Error('DB connection lost'));
+      expect(await service.create({ title: 'Post', content: 'Texto', categoryId: CATEGORY_ID })).toBeNull();
     });
 
   });
@@ -107,77 +93,157 @@ describe('PostsService', () => {
   describe('findOne()', () => {
 
     it('should return a post when it exists', async () => {
-      // Arrange
-      const mockPost = { id: '1', title: 'Post encontrado', category: { name: 'Tech' } };
+      const mockPost = { id: POST_ID, title: 'Post encontrado', category: { name: 'Tech' } };
       mockPostsRepository.findOne.mockResolvedValue(mockPost);
-
-      // Act
-      const result = await service.findOne('1');
-
-      // Assert
-      expect(result).toEqual(mockPost);
-      expect(result).not.toBeNull();
+      expect(await service.findOne(POST_ID)).toEqual(mockPost);
     });
 
     it('should return null when post does not exist', async () => {
-      // Arrange: el post no existe en la base de datos
       mockPostsRepository.findOne.mockResolvedValue(null);
-
-      // Act
-      const result = await service.findOne('inexistente');
-
-      // Assert
-      expect(result).toBeNull();
+      expect(await service.findOne(NOT_FOUND_ID)).toBeNull();
     });
 
     it('should call findOne with id and category relation', async () => {
-      // Arrange
       mockPostsRepository.findOne.mockResolvedValue(null);
-
-      // Act
-      await service.findOne('5');
-
-      // Assert: verificamos que se pasaron las relaciones correctas
+      await service.findOne(POST_ID);
       expect(mockPostsRepository.findOne).toHaveBeenCalledWith({
-        where: { id: '5' },
+        where: { id: POST_ID },
         relations: ['category'],
       });
     });
+
+    it('should return null when repository throws', async () => {
+      mockPostsRepository.findOne.mockRejectedValue(new Error('Timeout'));
+      expect(await service.findOne(POST_ID)).toBeNull();
+    });
+
+  });
+
+  describe('update()', () => {
+
+    it('should return null when post does not exist', async () => {
+      mockPostsRepository.findOne.mockResolvedValue(null);
+      expect(await service.update(NOT_FOUND_ID, { title: 'Nuevo', content: 'Texto', categoryId: CATEGORY_ID })).toBeNull();
+    });
+
+    it('should return null when new category does not exist', async () => {
+      const mockPost = { id: POST_ID, title: 'Viejo', category: { id: CATEGORY_ID } };
+      mockPostsRepository.findOne.mockResolvedValue(mockPost);
+      mockCategoriesRepository.findOne.mockResolvedValue(null);
+      expect(await service.update(POST_ID, { title: 'Nuevo', content: 'Texto', categoryId: NOT_FOUND_ID })).toBeNull();
+    });
+
+    it('should update title and content without changing category', async () => {
+      const mockPost  = { id: POST_ID, title: 'Viejo', content: 'Texto viejo' };
+      const savedPost = { id: POST_ID, title: 'Nuevo', content: 'Texto nuevo' };
+      mockPostsRepository.findOne.mockResolvedValue({ ...mockPost });
+      mockPostsRepository.save.mockResolvedValue(savedPost);
+
+      const result = await service.update(POST_ID, { title: 'Nuevo', content: 'Texto nuevo' });
+      expect(result).toEqual(savedPost);
+      expect(mockCategoriesRepository.findOne).not.toHaveBeenCalled();
+    });
+
+    it('should update category when new categoryId is provided', async () => {
+      const newCategoryId = '55555555-5555-5555-5555-555555555555';
+      const mockPost      = { id: POST_ID, title: 'Post', category: { id: CATEGORY_ID } };
+      const newCategory   = { id: newCategoryId, name: 'Nueva' };
+      const updatedPost   = { ...mockPost, category: newCategory };
+      mockPostsRepository.findOne.mockResolvedValue({ ...mockPost });
+      mockCategoriesRepository.findOne.mockResolvedValue(newCategory);
+      mockPostsRepository.save.mockResolvedValue(updatedPost);
+
+      const result = await service.update(POST_ID, { title: 'Post', content: 'Contenido', categoryId: newCategoryId });
+      expect(result?.category).toEqual(newCategory);
+    });
+
+    it('should return null when repository throws', async () => {
+      mockPostsRepository.findOne.mockRejectedValue(new Error('DB error'));
+      expect(await service.update(POST_ID, { title: 'x', content: 'y' })).toBeNull();
+    });
+
   });
 
   describe('remove()', () => {
 
     it('should return true when post is deleted', async () => {
-      // Arrange: delete afectó 1 fila → éxito
       mockPostsRepository.delete.mockResolvedValue({ affected: 1 });
-
-      // Act
-      const result = await service.remove('1');
-
-      // Assert
-      expect(result).toBe(true);
+      expect(await service.remove(POST_ID)).toBe(true);
     });
 
     it('should return false when post does not exist', async () => {
-      // Arrange: delete no afectó ninguna fila → no existía
       mockPostsRepository.delete.mockResolvedValue({ affected: 0 });
-
-      // Act
-      const result = await service.remove('inexistente');
-
-      // Assert
-      expect(result).toBe(false);
+      expect(await service.remove(NOT_FOUND_ID)).toBe(false);
     });
 
-    it('should return false when repository throws an error', async () => {
-      // Arrange: error en la base de datos
+    it('should return false when repository throws', async () => {
       mockPostsRepository.delete.mockRejectedValue(new Error('FK constraint'));
+      expect(await service.remove(POST_ID)).toBe(false);
+    });
 
-      // Act
-      const result = await service.remove('1');
+  });
 
-      // Assert
-      expect(result).toBe(false);
+  describe('findAll()', () => {
+
+    const mockPaginationResult = {
+      items: [
+        { id: POST_ID,   title: 'Post A', category: { name: 'Tech' } },
+        { id: POST_ID_2, title: 'Post B', category: { name: 'News' } },
+      ],
+      meta: { itemCount: 2, totalItems: 2, itemsPerPage: 10, totalPages: 1, currentPage: 1 },
+    };
+
+    it('should return paginated posts without filters', async () => {
+      mockPaginate.mockResolvedValue(mockPaginationResult);
+      const result = await service.findAll({ page: 1, limit: 10 });
+      expect(result).toEqual(mockPaginationResult);
+    });
+
+    it('should call createQueryBuilder with "post" alias', async () => {
+      mockPaginate.mockResolvedValue(mockPaginationResult);
+      await service.findAll({ page: 1, limit: 10 });
+      expect(mockPostsRepository.createQueryBuilder).toHaveBeenCalledWith('post');
+    });
+
+    it('should call leftJoinAndSelect for category relation', async () => {
+      mockPaginate.mockResolvedValue(mockPaginationResult);
+      await service.findAll({ page: 1, limit: 10 });
+      expect(mockQueryBuilder.leftJoinAndSelect).toHaveBeenCalledWith('post.category', 'category');
+    });
+
+    it('should call where when search is provided', async () => {
+      mockPaginate.mockResolvedValue(mockPaginationResult);
+      await service.findAll({ page: 1, limit: 10, search: 'NestJS' });
+      expect(mockQueryBuilder.where).toHaveBeenCalled();
+    });
+
+    it('should not call where when search is not provided', async () => {
+      mockPaginate.mockResolvedValue(mockPaginationResult);
+      await service.findAll({ page: 1, limit: 10 });
+      expect(mockQueryBuilder.where).not.toHaveBeenCalled();
+    });
+
+    it('should call orderBy when sort is provided', async () => {
+      mockPaginate.mockResolvedValue(mockPaginationResult);
+      await service.findAll({ page: 1, limit: 10, sort: 'title', order: 'ASC' });
+      expect(mockQueryBuilder.orderBy).toHaveBeenCalledWith('post.title', 'ASC');
+    });
+
+    it('should not call orderBy when sort is not provided', async () => {
+      mockPaginate.mockResolvedValue(mockPaginationResult);
+      await service.findAll({ page: 1, limit: 10 });
+      expect(mockQueryBuilder.orderBy).not.toHaveBeenCalled();
+    });
+
+    it('should pass page and limit to paginate', async () => {
+      mockPaginate.mockResolvedValue(mockPaginationResult);
+      await service.findAll({ page: 2, limit: 5 });
+      expect(mockPaginate).toHaveBeenCalledWith(mockQueryBuilder, { page: 2, limit: 5 });
+    });
+
+    it('should return null when paginate throws', async () => {
+      mockPaginate.mockRejectedValue(new Error('DB timeout'));
+      expect(await service.findAll({ page: 1, limit: 10 })).toBeNull();
     });
 
   });
