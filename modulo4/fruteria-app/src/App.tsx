@@ -1,5 +1,4 @@
 // src/App.tsx
-
 import WelcomeBanner       from './components/WelcomeBanner'
 import UserGreeting        from './components/UserGreeting'
 import CurrentDateDisplay  from './components/CurrentDateDisplay'
@@ -11,8 +10,6 @@ import StatusBadge         from './components/StatusBadge'
 import MiniProfileCard     from './components/MiniProfileCard'
 import SimpleInfoTable     from './components/SimpleInfoTable'
 import SimpleInfoCars      from './components/SimpleInfoCars'
-import DigitalCounter from './components/DigitalCounter'
-import UserProfileForm from './components/UserProfileForm'
 /*import ProductCard         from './components/ProductCard'
 import ProductCatalogList  from './components/ProductCatalogList'
 import UserProfileCard     from './components/UserProfileCard'*/
@@ -34,7 +31,7 @@ import UserProfileCard     from './components/UserProfileCard'*/
 // │  12  ProductCatalogList  — lista con renderizado condicional de items   │
 // │  13  UserProfileCard     — ejercicio: props complejas + rol             │
 // └──────────────────────────────────────────────────────────────────────────┘
-const PASO = 12
+const PASO = 1
 
 const fruits = [
   { name: 'Manzana', emoji: '🍎', inSeason: true, calories: 52 },
@@ -98,15 +95,6 @@ export default function App() {
           { label: 'Total',     value: '$94.99', highlight: true },
         ]}
       />
-    ) :
-    PASO === 11 ? (
-      <DigitalCounter 
-      label="Contador" 
-      step={1}
-      />
-    ):
-    PASO === 12 ? (
-      <UserProfileForm/>
     ):
     /*PASO === 11 ? (
       <SimpleInfoCars

@@ -26,10 +26,12 @@ export default function DigitalCounter({
 
   function decrement() {
     setCount(count - step)
+    console.log('render', count)
   }
 
   function reset() {
     setCount(initialValue)
+    console.log('render', count)
   }
 
   return (
@@ -43,6 +45,10 @@ export default function DigitalCounter({
       <button onClick={reset} style={{ ...btnStyle, fontSize: 12, color: '#999' }}>
         Reset
       </button>
+      <br/>
+      <div>
+        Otro contador: {count}
+      </div>
     </div>
   )
 }

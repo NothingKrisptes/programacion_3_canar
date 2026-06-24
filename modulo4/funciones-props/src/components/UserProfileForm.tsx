@@ -54,7 +54,7 @@ export default function UserProfileForm() {
         <p style={{ margin: 0, fontSize: 13 }}>
           <strong>{profile.name || '—'}</strong> · {profile.email || '—'} · {profile.age || '—'} años 
           <p>
-            <strong>Ciudad: {profile.city || '—'}  </strong>
+            <strong>Ciudad:</strong> {profile.city || '—'}  
           </p>
         </p>
       </div>
