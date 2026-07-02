@@ -4,22 +4,25 @@ import { useReducer } from 'react'
 
 interface FormState {
   name:     string
+  lastname: string
   email:    string
   password: string
-  errors:   Partial<Record<'name' | 'email' | 'password', string>>
-  status:   'idle' | 'submitting' | 'success' | 'error'
+  errors:   Partial<Record<'name' | 'email' | 'password'|'lastname', string>>
+  status:   'idle' | 'submitting' | 'success' | 'error' |'validating'
 }
 
 type FormAction =
-  | { type: 'SET_FIELD'; field: keyof Pick<FormState, 'name' | 'email' | 'password'>; value: string }
+  | { type: 'SET_FIELD'; field: keyof Pick<FormState, 'name' | 'lastname' | 'email' | 'password'>; value: string }
   | { type: 'SET_ERRORS'; errors: FormState['errors'] }
   | { type: 'SUBMIT_START' }
+  | { type: 'SUBMIT_VALIDATING' }
   | { type: 'SUBMIT_SUCCESS' }
   | { type: 'SUBMIT_ERROR' }
   | { type: 'RESET' }
 
 const INITIAL_STATE: FormState = {
   name:     '',
+  lastname: '',
   email:    '',
   password: '',
   errors:   {},
@@ -39,6 +42,8 @@ function formReducer(state: FormState, action: FormAction): FormState {
       return { ...state, errors: action.errors }
     case 'SUBMIT_START':
       return { ...state, status: 'submitting' }
+    case 'SUBMIT_VALIDATING':
+      return { ...state, status: 'validating' }
     case 'SUBMIT_SUCCESS':
       return { ...INITIAL_STATE, status: 'success' }
     case 'SUBMIT_ERROR':
@@ -54,6 +59,7 @@ export default function RegistrationForm() {
   function validate(): boolean {
     const errors: FormState['errors'] = {}
     if (!state.name.trim())         errors.name     = 'El nombre es requerido'
+    if (!state.lastname.trim())         errors.lastname     = 'El apellido es requerido'
     if (!state.email.includes('@')) errors.email    = 'Email inválido'
     if (state.password.length < 6)  errors.password = 'Mínimo 6 caracteres'
 
@@ -71,10 +77,14 @@ export default function RegistrationForm() {
     dispatch({ type: 'SUBMIT_START' })
     // Simulación de llamada a API
     await new Promise((resolve) => setTimeout(resolve, 1200))
+    dispatch({ type: 'SUBMIT_VALIDATING' })
+    // Simulación de llamada a API
+    await new Promise((resolve) => setTimeout(resolve, 1200))
     dispatch({ type: 'SUBMIT_SUCCESS' })
   }
 
   const isSubmitting = state.status === 'submitting'
+  const isValidatig = state.status === 'validating'
 
   return (
     <form
@@ -101,7 +111,20 @@ export default function RegistrationForm() {
           <p style={errorStyle}>{state.errors.name}</p>
         )}
       </div>
-
+      <div>
+        <input
+          value={state.lastname}
+          onChange={(e) =>
+            dispatch({ type: 'SET_FIELD', field: 'lastname', value: e.target.value })
+          }
+          placeholder="Apellido completo"
+          disabled={isSubmitting}
+          style={inputStyle(!!state.errors.lastname)}
+        />
+        {state.errors.lastname && (
+          <p style={errorStyle}>{state.errors.lastname}</p>
+        )}
+      </div>
       <div>
         <input
           type="email"
@@ -140,13 +163,13 @@ export default function RegistrationForm() {
           disabled={isSubmitting}
           style={{
             flex: 1, padding: '10px',
-            background: isSubmitting ? '#93c5fd' : '#0070f3',
+            background: isSubmitting || isValidatig? '#93c5fd' : '#0070f3',
             color: '#fff', border: 'none', borderRadius: 6,
-            cursor: isSubmitting ? 'not-allowed' : 'pointer',
+            cursor: isSubmitting || isValidatig? 'not-allowed' : 'pointer',
             fontWeight: 500,
           }}
         >
-          {isSubmitting ? 'Registrando...' : 'Registrar'}
+          {isSubmitting ? 'Registrando...' : isValidatig ? 'Validando ...' : 'Registrar'}
         </button>
         <button
           type="button"
