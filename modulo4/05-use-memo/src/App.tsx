@@ -6,9 +6,9 @@ import OrderMetrics      from './components/OrderMetrics'
 import MultiTagFilter    from './components/MultiTagFilter'
 //USE CALLBACK
 import MemoizedList    from './components/MemoizedList'
-// import SearchWithFetch from './components/SearchWithFetch'
-// import FilterTable     from './components/FilterTable'
-// import PaginatedFetch  from './components/PaginatedFetch'
+import SearchWithFetch from './components/SearchWithFetch'
+import FilterTable     from './components/FilterTable'
+import PaginatedFetch  from './components/PaginatedFetch'
 
 
 // ┌──────────────────────────────────────────────────────────────────────┐
@@ -18,7 +18,7 @@ import MemoizedList    from './components/MemoizedList'
 // │  3  OrderMetrics     — múltiples useMemo derivados de un filtro     │
 // │  4  MultiTagFilter   — filtro AND por tags con conteos memoizados   │
 // └──────────────────────────────────────────────────────────────────────┘
-const PASO = 5
+const PASO = 8
 
 export default function App() {
   const content =
@@ -29,9 +29,9 @@ export default function App() {
     PASO === 4 ? <MultiTagFilter /> :
   // USE CALLBACK
     PASO === 5 ? <MemoizedList /> :
-    // PASO === 6 ? <SearchWithFetch /> :
-    // PASO === 7 ? <FilterTable /> :
-    // PASO === 8 ? <PaginatedFetch /> :
+    PASO === 6 ? <SearchWithFetch /> :
+    PASO === 7 ? <FilterTable /> :
+    PASO === 8 ? <PaginatedFetch /> :
     <p style={{ color: '#e00' }}>Paso {PASO}: crea el componente primero</p>
 
   return (
