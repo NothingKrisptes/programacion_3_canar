@@ -1,0 +1,19 @@
+/* src/theme/theme.css */
+
+:root {
+  --bg:     #ffffff;
+  --card:   #f9fafb;
+  --border: #e5e7eb;
+  --text:   #111827;
+  --accent: #0070f3;
+  --muted:  #6b7280;
+}
+
+[data-theme="dark"] {
+  --bg:     #0f172a;
+  --card:   #1e293b;
+  --border: #334155;
+  --text:   #f1f5f9;
+  --accent: #60a5fa;
+  --muted:  #94a3b8;
+}
