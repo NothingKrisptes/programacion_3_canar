@@ -5,6 +5,7 @@
   background:    var(--card);
   border-radius: 10px;
   padding:       16px;
+  background-color: aqua;
 }
 
 .title {
