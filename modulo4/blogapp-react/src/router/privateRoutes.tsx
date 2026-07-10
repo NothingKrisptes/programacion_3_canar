@@ -1,0 +1,13 @@
+// src/router/privateRoutes.tsx
+import { Route } from 'react-router-dom'
+import DashboardHomePage from '@/pages/private/DashboardHomePage'
+import CategoriesPage from '@/pages/private/CategoriesPage'
+import PostsPage from '@/pages/private/PostsPage'
+import ProfilePage from '@/pages/private/ProfilePage'
+
+export const privateRoutes = [
+  <Route key="dashboard" path="/dashboard" element={<DashboardHomePage />} />,
+  <Route key="categorias" path="/categorias" element={<CategoriesPage />} />,
+  <Route key="posts" path="/posts" element={<PostsPage />} />,
+  <Route key="perfil" path="/perfil" element={<ProfilePage />} />,
+]
