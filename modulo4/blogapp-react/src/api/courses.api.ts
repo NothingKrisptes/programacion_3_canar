@@ -1,24 +1,34 @@
-// src/api/categories.api.ts
+// src/api/courses.api.ts
 import { http } from './http'
-import type { ApiResponse, Paginated } from '@/types/common.types'
-import type { Category, CreateCategoryPayload } from '@/types/category.types'
-import type { ListQuery } from '@/types/query.types'
+import type { ApiResponse } from '@/types/common.types'
+import type { Curso, CreateCoursePayload } from '@/types/course.types'
 
-export async function getCategories(query: ListQuery = {}) {
-  const { data } = await http.get<ApiResponse<Paginated<Category>>>('/categories', { params: query })
+interface CoursesPage {
+  items: Curso[]
+  page: number
+  limit: number
+}
+
+export async function getCourses(page = 1, limit = 6) {
+  const { data } = await http.get<ApiResponse<CoursesPage>>('/cursos', { params: { page, limit } })
   return data.data
 }
 
-export async function createCategory(payload: CreateCategoryPayload) {
-  const { data } = await http.post<ApiResponse<Category>>('/categories', payload)
+export async function getCourse(id: string) {
+  const { data } = await http.get<ApiResponse<Curso>>(`/cursos/${id}`)
   return data.data
 }
 
-export async function updateCategory(id: string, payload: CreateCategoryPayload) {
-  const { data } = await http.put<ApiResponse<Category>>(`/categories/${id}`, payload)
+export async function createCourse(payload: CreateCoursePayload) {
+  const { data } = await http.post<ApiResponse<Curso>>('/cursos', payload)
   return data.data
 }
 
-export async function deleteCategory(id: string) {
-  await http.delete(`/categories/${id}`)
+export async function updateCourse(id: string, payload: CreateCoursePayload) {
+  const { data } = await http.put<ApiResponse<Curso>>(`/cursos/${id}`, payload)
+  return data.data
+}
+
+export async function deleteCourse(id: string) {
+  await http.delete(`/cursos/${id}`)
 }

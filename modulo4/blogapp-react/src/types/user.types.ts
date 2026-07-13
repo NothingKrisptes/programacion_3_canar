@@ -6,3 +6,9 @@ export interface User {
   isActive: boolean
   profile?: string
 }
+// src/types/user.types.ts (agregar)
+export interface CreateUserPayload {
+  username: string
+  email: string
+  password: string
+}

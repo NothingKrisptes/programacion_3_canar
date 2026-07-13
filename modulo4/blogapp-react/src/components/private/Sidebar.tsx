@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button'
 
 const menuItems = [
   { label: 'Categorías', to: '/categorias' },
-  { label: 'Posts', to: '/posts/nuevo' },
+  { label: 'Posts', to: '/posts' },
   { label: 'Cursos', to: '/cursos' },
   { label: 'Usuarios', to: '/usuarios' },
 ]
