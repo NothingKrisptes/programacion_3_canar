@@ -1,3 +1,4 @@
+// src/users/user.entity.ts
 import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
 
 @Entity('users')
@@ -8,10 +9,10 @@ export class User {
   @Column({ unique: true })
   username?: string;
 
-  @Column()
+  @Column({ unique: true })
   email?: string;
 
-  @Column()
+  @Column({ nullable: true })
   password?: string;
 
   @Column({ default: true })
@@ -19,4 +20,10 @@ export class User {
 
   @Column({ nullable: true })
   profile?: string;
+
+  @Column({ type: 'varchar', unique: true, nullable: true })
+  googleId?: string | null;
+
+  @Column({ type: 'varchar', nullable: true })
+  avatarUrl?: string | null;
 }

@@ -35,7 +35,7 @@ export default function CategoryFormDialog({ open, onOpenChange, category, onSav
   const onSubmit = async (values: FormValues) => {
     if (category) await updateCategory(category.id, values)
     else await createCategory(values)
-    showToast(category ? 'Categoría actualizada' : 'Categoría creada', 'success')
+    showToast(category ? 'Categoría actualizada' : 'Categoría creada')
     onOpenChange(false)
     onSaved()
   }
