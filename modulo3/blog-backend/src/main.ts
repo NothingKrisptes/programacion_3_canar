@@ -8,6 +8,11 @@ import { NestExpressApplication } from '@nestjs/platform-express'; // 👈 Impor
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule); // 👈 Tipo específico
 
+  app.enableCors({
+    origin: process.env.FRONTEND_URL ?? 'http://localhost:5173',
+    credentials: true,
+  });
+
   app.useGlobalPipes(new ValidationPipe({ whitelist: true, forbidNonWhitelisted: true }));
   app.useGlobalFilters(new GlobalHttpExceptionFilter());
 
