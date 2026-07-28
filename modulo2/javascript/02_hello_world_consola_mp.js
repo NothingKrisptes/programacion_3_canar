@@ -1,0 +1,1 @@
+console.log("Wheels To Go - Sistema iniciado");

@@ -1,0 +1,65 @@
+name: 🚀 Deploy NestJS Blog Backend API to VPS
+
+on:
+  push:
+    branches: [SEGUNDO-CORTE]
+
+jobs:
+  test:
+    name: 🧪 Unit Tests
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Run unit tests
+      run: npm test -- --forceExit
+
+  deploy:
+    name: 🚀 Deploy to VPS
+    needs: test
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Copy project to VPS
+      uses: appleboy/scp-action@v0.1.3
+      with:
+        host: ${{ secrets.VPS_HOST }}
+        username: root
+        key: ${{ secrets.VPS_KEY }}
+        source: "."
+        target: "/opt/higuera-blog-backend"
+
+    - name: Run deploy commands on VPS
+      uses: appleboy/ssh-action@v1.0.3
+      with:
+        host: ${{ secrets.VPS_HOST }}
+        username: root
+        key: ${{ secrets.VPS_KEY }}
+        script: |
+          set -e
+          cd /opt/higuera-blog-backend
+
+          sudo lsof -t -i:3000 | xargs -r sudo kill -9 || true
+
+          printf "%s" "${{ secrets.ENV_FILE }}" > .env
+
+          npm install
+          npm run build
+
+          pm2 stop higuera-blog-backend || true
+          pm2 delete higuera-blog-backend || true
+          pm2 start dist/main.js --name higuera-blog-backend
+          pm2 save

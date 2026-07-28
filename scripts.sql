@@ -1,0 +1,12 @@
+DB_HOST=localhost
+DB_PORT=5432
+DB_USER=consultorio_odontologico_user_pg
+DB_PASS=consultorio_odontologico_pass_123
+DB_NAME=consultorio_odontologico_db_pg
+JWT_SECRET=supersecret
+JWT_EXPIRES_IN=3600s
+MAIL_USER=iancm0168@gmail.com
+MAIL_PASS=dsnqhxvekcltfkbi
+SENDGRID_API_KEY=SG.xxxxx
+SENDGRID_SENDER=remitente@tudominio.com
+MONGO_URI=mongodb://consultorio_odontologico_user_mongo:admin123@localhost:27017/consultorio_odontologico_db_mongo

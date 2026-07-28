@@ -1,0 +1,23 @@
+.productos-grid {
+    display: flex; /* activa Flexbox */
+}
+
+.contenedor {
+    display: flex;
+    flex-direction: row;            /* → izquierda a derecha (defecto) */
+    flex-direction: row-reverse;    /* ← derecha a izquierda */
+    flex-direction: column;         /* ↓ arriba a abajo */
+    flex-direction: column-reverse; /* ↑ abajo a arriba */
+}
+
+/* Navbar: items en fila */
+.navbar {
+    display: flex;
+    flex-direction: row;
+}
+  
+  /* Tarjeta: imagen, nombre, precio y botón en columna */
+.producto-card {
+    display: flex;
+    flex-direction: column;
+}

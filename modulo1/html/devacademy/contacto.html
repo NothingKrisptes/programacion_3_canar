@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto — DevAcademy</title>
+    <meta name="description" content="Contacta con DevAcademy. Te respondemos en menos de 24 horas.">
+</head>
+
+<body>
+
+    <header>
+        <a href="index.html"><strong>DevAcademy</strong></a>
+    </header>
+
+    <nav aria-label="Navegación principal">
+        <ul>
+            <li><a href="index.html">🏠 Inicio</a></li>
+            <li><a href="cursos.html">📚 Cursos</a></li>
+            <li><a href="contacto.html">✉️ Contacto</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <h1>Contacta con nosotros</h1>
+        <p>¿Tienes dudas sobre nuestros cursos? ¿Necesitas una solución para
+            tu empresa? Te respondemos en menos de 24 horas.</p>
+
+        <section>
+            <h2>Formulario de contacto</h2>
+            <p>Los campos marcados con <abbr title="obligatorio">*</abbr> son obligatorios.</p>
+
+            <form action="/enviar-contacto" method="post">
+
+                <fieldset>
+                    <legend>Tus datos</legend>
+
+                    <div>
+                        <label for="nombre">Nombre y apellidos <abbr title="obligatorio">*</abbr></label>
+                        <input type="text" id="nombre" name="nombre" placeholder="Ana García" minlength="3"
+                            maxlength="100" required autocomplete="name">
+                    </div>
+
+                    <div>
+                        <label for="email">Email <abbr title="obligatorio">*</abbr></label>
+                        <input type="email" id="email" name="email" placeholder="tu@correo.com" required
+                            autocomplete="email">
+                    </div>
+
+                    <div>
+                        <label for="telefono">Teléfono <small>(opcional)</small></label>
+                        <input type="tel" id="telefono" name="telefono" placeholder="+34 600 000 000"
+                            autocomplete="tel">
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Tu consulta</legend>
+
+                    <div>
+                        <label for="asunto">Asunto <abbr title="obligatorio">*</abbr></label>
+                        <select id="asunto" name="asunto" required>
+                            <option value="">-- Selecciona el asunto --</option>
+                            <option value="info-cursos">Información sobre cursos</option>
+                            <option value="plan-empresa">Plan para empresa</option>
+                            <option value="soporte">Soporte técnico</option>
+                            <option value="facturacion">Facturación</option>
+                            <option value="otro">Otro</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label for="curso-interes">Curso de interés <small>(opcional)</small></label>
+                        <select id="curso-interes" name="curso">
+                            <option value="">-- Ninguno específico --</option>
+                            <optgroup label="Fundamentos">
+                                <option value="html5">HTML5</option>
+                                <option value="css3">CSS3</option>
+                            </optgroup>
+                            <optgroup label="Programación">
+                                <option value="javascript">JavaScript</option>
+                                <option value="typescript">TypeScript</option>
+                            </optgroup>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label for="mensaje">Mensaje <abbr title="obligatorio">*</abbr></label>
+                        <textarea id="mensaje" name="mensaje"
+                            placeholder="Cuéntanos tu consulta con el mayor detalle posible..." rows="6" minlength="20"
+                            maxlength="2000" required></textarea>
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Preferencias de contacto</legend>
+
+                    <div>
+                        <p>¿Cómo prefieres que te contactemos?</p>
+                        <input type="radio" id="pref-email" name="preferencia" value="email" checked>
+                        <label for="pref-email">Por email</label>
+
+                        <input type="radio" id="pref-tel" name="preferencia" value="telefono">
+                        <label for="pref-tel">Por teléfono</label>
+
+                        <input type="radio" id="pref-indiferente" name="preferencia" value="indiferente">
+                        <label for="pref-indiferente">Indiferente</label>
+                    </div>
+
+                    <div>
+                        <label for="mejor-hora">Mejor hora para llamar <small>(si aplica)</small></label>
+                        <input type="time" id="mejor-hora" name="mejor_hora" min="09:00" max="20:00">
+                    </div>
+                </fieldset>
+
+                <div>
+                    <input type="checkbox" id="newsletter" name="newsletter" value="si">
+                    <label for="newsletter">
+                        Quiero recibir el newsletter semanal con tutoriales gratuitos
+                    </label>
+                </div>
+
+                <div>
+                    <input type="checkbox" id="privacidad" name="privacidad" value="acepto" required>
+                    <label for="privacidad">
+                        He leído y acepto la
+                        <a href="/privacidad" target="_blank" rel="noopener noreferrer">
+                            política de privacidad</a> <abbr title="obligatorio">*</abbr>
+                    </label>
+                </div>
+
+                <div>
+                    <button type="submit">📨 Enviar mensaje</button>
+                    <button type="reset">🗑 Limpiar</button>
+                </div>
+
+            </form>
+        </section>
+
+        <!-- Información de contacto directa -->
+        <section>
+            <h2>Otras formas de contacto</h2>
+
+            <address>
+                <h3>Oficina Madrid</h3>
+                <p>
+                    Calle del Código 42<br>
+                    28001 Madrid, España
+                </p>
+                <p>
+                    📞 <a href="tel:+34912345678">+34 912 345 678</a><br>
+                    📧 <a href="mailto:hola@devacademy.es">hola@devacademy.es</a>
+                </p>
+                <p>
+                    🕐 Horario: Lunes a Viernes, 9:00 a 18:00h
+                </p>
+            </address>
+
+            <section>
+                <h3>Redes sociales</h3>
+                <ul>
+                    <li>
+                        <a href="https://twitter.com/devacademy" target="_blank" rel="noopener noreferrer">
+                            Twitter/X: @devacademy
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://linkedin.com/company/devacademy" target="_blank" rel="noopener noreferrer">
+                            LinkedIn: DevAcademy
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://youtube.com/@devacademy" target="_blank" rel="noopener noreferrer">
+                            YouTube: DevAcademy Tutoriales
+                        </a>
+                    </li>
+                </ul>
+            </section>
+        </section>
+
+    </main>
+
+    <aside aria-label="Preguntas frecuentes">
+        <section>
+            <h2>Respuestas rápidas</h2>
+            <details>
+                <summary>¿En cuánto tiempo respondéis?</summary>
+                <p>Menos de 24 horas en días laborables. Urgencias: llama directamente.</p>
+            </details>
+            <details>
+                <summary>¿Tenéis planes para empresas?</summary>
+                <p>Sí. Contacta con nosotros indicando el número de empleados y
+                    recibirás una propuesta personalizada.</p>
+            </details>
+        </section>
+    </aside>
+
+    <footer>
+        <p>
+            <a href="index.html">Inicio</a> |
+            <a href="cursos.html">Cursos</a> |
+            <a href="contacto.html">Contacto</a>
+        </p>
+        <p><small>&copy; 2026 DevAcademy S.L.</small></p>
+    </footer>
+
+</body>
+
+</html>

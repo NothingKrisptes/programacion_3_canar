@@ -1,0 +1,46 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: center;
+}
+
+.precio-producto {
+    font-family: 'Courier New', Courier, monospace;
+}
+
+/* Fuente de display para títulos de TechStore */
+.titulos {
+    font-family: 'Playfair Display', Georgia, serif;
+}
+
+/* Fuente de cuerpo para textos y UI */
+.internacional {
+    font-family: 'Inter', sans-serif;
+    color: cadetblue;
+}
+
+.titulo-seccion {
+    font-weight: 700;
+}
+
+/* negrita */
+.precio-producto {
+    font-weight: 600;
+}
+
+/* semi-negrita */
+.descripcion {
+    font-weight: 400;
+}
+
+/* normal */
+.nota-legal {
+    font-weight: 300;
+}
+
+/* delgado */
+
+.precio-original {
+    font-style: italic;
+    text-decoration: line-through;
+    color: #af0d0d;
+}

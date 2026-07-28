@@ -1,0 +1,10 @@
+const nombreCliente: string = "Ana García";
+const diasAlquiler: number = 5;
+const esMiembro: boolean = true;
+
+const nombreCliente2 = "Luis Pérez"; 
+const diasAlquiler2 = 3;             
+const esMiembro2 = false;            
+
+console.log(`Cliente: ${nombreCliente}, días: ${diasAlquiler}, miembro: ${esMiembro}`);
+console.log(`Cliente: ${nombreCliente2}, días: ${diasAlquiler2}, miembro: ${esMiembro2}`);

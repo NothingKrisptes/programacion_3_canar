@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Wheels To Go - Panel de Administración </title>
+    <script src="dom04-eventos_mp.js" defer></script>
+    <style>
+        .boton{
+            background-color: #0070f3;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            padding: 0.5em 1em;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="titulo"> Eventos en el DOM - Wheels To Go </h1>
+    <h2 onclick="alert('Bienvenido a Wheels To Go')"> Eventos Inline </h2>
+    <button class="boton" id="btn" onclick="mostrarAlerta()"> Ver promociones </button>
+
+    <button class="boton" id="btn2" onclick="agregarVehiculo()"> Agregar vehículo al catálogo </button>
+    <ul id="lista-vehiculos1"></ul>
+
+    <button class="boton" id="btn3"> Agregar vehículo desde Listener </button>
+    <ul id="lista-vehiculos2"></ul>
+
+    <p id="parrafo"> Bienvenido, elige tu vehículo </p>
+    <button class="boton" id="btn4" onclick="cambiarTexto()"> Modificar texto </button>
+
+    <h2 id="contenido"> Oficina de Retiro: Quito - Norte </h2>
+    <button class="boton" id="btn5" onclick="cambiarContenido()"> Cambiar oficina </button>
+
+    <br>
+
+    <input id="campo" type="text" placeholder="Nombre del conductor...">
+
+    <br>
+
+    <input id="campo_actualizar_parrafo" type="text" placeholder="Placa del vehículo...">
+    <p id="parrafo_placa"> Placa: sin ingresar </p>
+
+</body>
+</html>

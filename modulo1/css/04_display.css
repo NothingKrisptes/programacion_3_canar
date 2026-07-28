@@ -1,0 +1,40 @@
+/* Por defecto son block: div, p, h1-h6, section, article... */
+.banner-oferta {
+    display: block;
+    width: 100%;
+    background-color: #e63946;
+    color: rgb(255, 255, 255);
+    padding: 68px;
+    text-align: center;
+    font-size: 5rem;
+  }
+
+  /* Por defecto son inline: span, a, strong, em... */
+.etiqueta-nuevo {
+    display: inline;
+    background-color: #2a9d8f;
+    color: white;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+  }
+
+  .btn-carrito {
+    display: inline-block;
+    background-color: #7328ffa4;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: bold;
+  }
+
+  .menu-movil {
+    display: none;
+    background-color: rgb(252, 238, 238);
+    padding: 10px;
+  }
+  
+  .menu-movil.activo {
+    display: block;
+  }

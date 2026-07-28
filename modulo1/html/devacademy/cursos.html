@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo de cursos — DevAcademy</title>
+    <meta name="description" content="Explora nuestro catálogo: HTML5, CSS3, JavaScript, TypeScript
+        y React. Aprende a tu ritmo con proyectos reales.">
+</head>
+
+<body>
+
+    <header>
+        <a href="index.html">
+            <strong>DevAcademy</strong>
+        </a>
+    </header>
+
+    <nav aria-label="Navegación principal">
+        <ul>
+            <li><a href="index.html">🏠 Inicio</a></li>
+            <li><a href="cursos.html">📚 Cursos</a></li>
+            <li><a href="contacto.html">✉️ Contacto</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <h1>Catálogo de cursos</h1>
+        <p>Todos nuestros cursos incluyen ejercicios prácticos, proyecto final
+            y certificado de finalización.</p>
+
+        <!-- Navegación interna -->
+        <nav aria-label="Categorías de cursos">
+            <a href="#fundamentos">Fundamentos</a> |
+            <a href="#javascript">JavaScript</a> |
+            <a href="#typescript">TypeScript</a>
+        </nav>
+
+        <!-- ── Sección Fundamentos ──────────────────────────────── -->
+        <section id="fundamentos">
+            <h2>Fundamentos del frontend</h2>
+
+            <article id="html5">
+                <header>
+                    <h3>HTML5 para principiantes</h3>
+                    <p>⭐⭐⭐⭐⭐ (248 valoraciones) | 🎓 1.847 estudiantes</p>
+                </header>
+                <figure>
+                    <img src="https://picsum.photos/600/300?random=30" alt="Portada del curso HTML5" width="600"
+                        loading="lazy">
+                </figure>
+                <p>La base de toda la web. Aprenderás a estructurar contenido
+                    correctamente, usando las etiquetas semánticas de HTML5 y las
+                    buenas prácticas actuales.</p>
+                <h4>Contenido del curso</h4>
+                <ol>
+                    <li>Estructura y primer archivo HTML</li>
+                    <li>Texto, listas y citas</li>
+                    <li>Enlaces e imágenes</li>
+                    <li>Tablas de datos</li>
+                    <li>Formularios con validación</li>
+                    <li>Semántica HTML5</li>
+                    <li>Multimedia y gráficos</li>
+                    <li>Proyecto final</li>
+                </ol>
+                <h4>Precio</h4>
+                <p><strong><del>49€</del> <ins>29€</ins></strong>
+                    <small>(Oferta válida hasta el 30 de abril)</small>
+                </p>
+                <p><a href="contacto.html?curso=html5">Inscribirme en HTML5</a></p>
+            </article>
+
+        </section>
+
+        <!-- ── Sección JavaScript ───────────────────────────────── -->
+        <section id="javascript">
+            <h2>JavaScript</h2>
+
+            <article>
+                <header>
+                    <h3>JavaScript moderno — Completo</h3>
+                    <p>⭐⭐⭐⭐⭐ (512 valoraciones) | 🎓 3.241 estudiantes</p>
+                </header>
+                <p>Desde las bases hasta los conceptos más avanzados del JavaScript moderno.
+                    Asincronía, módulos, POO, el DOM y proyectos reales.</p>
+                <h4>Temario resumido</h4>
+                <ul>
+                    <li>Variables, tipos de datos y operadores</li>
+                    <li>Control de flujo y funciones</li>
+                    <li>Arrays y objetos</li>
+                    <li>Programación orientada a objetos</li>
+                    <li>Asincronía: Promises y async/await</li>
+                    <li>Manipulación del DOM</li>
+                    <li>Fetch API y consumo de APIs REST</li>
+                    <li>SPA sin frameworks</li>
+                </ul>
+                <p><strong><del>99€</del> <ins>79€</ins></strong></p>
+                <p><a href="contacto.html?curso=javascript">Inscribirme en JavaScript</a></p>
+            </article>
+
+        </section>
+
+        <!-- ── Sección TypeScript ────────────────────────────────── -->
+        <section id="typescript">
+            <h2>TypeScript</h2>
+
+            <article>
+                <header>
+                    <h3>TypeScript desde cero hasta avanzado</h3>
+                    <p>⭐⭐⭐⭐⭐ (189 valoraciones) | 🎓 1.120 estudiantes</p>
+                </header>
+                <p>El complemento perfecto para JavaScript. Tipado estático,
+                    interfaces, genéricos, POO y un API REST completa.</p>
+                <p><strong><del>89€</del> <ins>69€</ins></strong></p>
+                <p><a href="contacto.html?curso=typescript">Inscribirme en TypeScript</a></p>
+            </article>
+
+        </section>
+
+        <!-- Tabla comparativa de planes -->
+        <section>
+            <h2>Planes de suscripción</h2>
+
+            <table>
+                <caption>Comparativa de planes — acceso a todos los cursos</caption>
+                <thead>
+                    <tr>
+                        <th scope="col">Característica</th>
+                        <th scope="col">Básico</th>
+                        <th scope="col">Pro</th>
+                        <th scope="col">Enterprise</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">Precio mensual</th>
+                        <td>9€/mes</td>
+                        <td>29€/mes</td>
+                        <td>99€/mes</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Precio anual</th>
+                        <td>86€/año</td>
+                        <td>278€/año</td>
+                        <td>950€/año</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Cursos incluidos</th>
+                        <td>5 cursos</td>
+                        <td>Todos los cursos</td>
+                        <td>Todos + empresa</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Proyectos prácticos</th>
+                        <td>Básicos</td>
+                        <td>✅ Completos</td>
+                        <td>✅ Completos</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Soporte tutor</th>
+                        <td>Foro</td>
+                        <td>Email 48h</td>
+                        <td>Chat en vivo</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Certificado</th>
+                        <td>❌</td>
+                        <td>✅</td>
+                        <td>✅</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Usuarios</th>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>Hasta 50</td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th scope="row">Mejor para</th>
+                        <td>Explorar</td>
+                        <td>Aprender en serio</td>
+                        <td>Equipos</td>
+                    </tr>
+                </tfoot>
+            </table>
+
+            <p><a href="contacto.html">¿Dudas? Habla con nosotros →</a></p>
+        </section>
+
+    </main>
+
+    <aside aria-label="Información de ayuda">
+        <section>
+            <h2>¿Tienes dudas?</h2>
+            <p>Consulta nuestras preguntas frecuentes o habla directamente con un asesor.</p>
+            <details>
+                <summary>¿Los cursos tienen fecha de caducidad?</summary>
+                <p>No. Cuando compras un curso tienes acceso de por vida, incluyendo
+                    todas las actualizaciones futuras.</p>
+            </details>
+            <details>
+                <summary>¿Hay certificado?</summary>
+                <p>Sí. Al completar un curso recibes un certificado digital verificable
+                    que puedes añadir a tu perfil de LinkedIn.</p>
+            </details>
+            <details>
+                <summary>¿Puedo pedir reembolso?</summary>
+                <p>Sí. Tienes 30 días de garantía de devolución sin preguntas.</p>
+            </details>
+        </section>
+    </aside>
+
+    <footer>
+        <p>
+            <a href="index.html">Inicio</a> |
+            <a href="cursos.html">Cursos</a> |
+            <a href="contacto.html">Contacto</a>
+        </p>
+        <p><small>&copy; 2026 DevAcademy S.L.</small></p>
+    </footer>
+
+</body>
+
+</html>

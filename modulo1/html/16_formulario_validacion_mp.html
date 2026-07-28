@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wheels To Go - Validaciones de Seguridad</title>
+</head>
+<body>
+    <h1> Formulario de Verificación de Riesgos </h1>
+    
+    <form action="/api/validar_reserva" method="post">
+        
+        <fieldset>
+            <legend> Documentos Obligatorios </legend>
+            <label for="licencia"> Número de Licencia de Conducir </label><br>
+            <input type="text" id="licencia" name="licencia" required>
+        </fieldset>     
+        
+        <fieldset>
+            <legend> Límites de Caracteres </legend>
+            <label for="nombre_completo"> Nombre Completo impreso en Licencia </label><br>
+            <input type="text" id="nombre_completo" name="nombre_completo" minlength="5" maxlength="80">
+        </fieldset>
+
+        <fieldset>
+            <legend> Validación por Patrón (Regex) </legend>
+            <label for="codigo_postal"> Código Postal de Facturación (5 dígitos) </label><br>
+            <input type="text" id="codigo_postal" name="codigo_postal" pattern="[0-9]{5}" title="Debe contener exactamente 5 números">
+        </fieldset>
+
+        <fieldset>
+            <legend> Restricciones de Edad Legal </legend>
+            <label for="edad_conductor"> Edad del Conductor </label><br>
+            <input type="number" id="edad_conductor" name="edad_conductor" min="21" max="75">
+        </fieldset>
+
+        <fieldset>
+            <legend> Datos Internos del Sistema (Deshabilitado) </legend>
+            <label for="codigo_contrato"> Código de Contrato Interno </label><br>
+            <input type="text" id="codigo_contrato" name="codigo_contrato" value="WTG-008945" disabled>
+        </fieldset>
+
+        <fieldset>
+            <legend> Valores Inmutables (Solo Lectura) </legend>
+            <label for="pais_origen"> País de Operación </label><br>
+            <input type="text" id="pais_origen" name="pais_origen" value="Ecuador" readonly>
+        </fieldset>
+        
+        <br>
+        <button type="submit"> Procesar Verificación </button>
+    </form>
+</body>
+</html>
